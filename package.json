@@ -1,0 +1,13 @@
+{
+  "name": "vinyl-rock-store",
+  "version": "1.0.0",
+  "description": "Ecommerce de vinilos de rock",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["ecommerce", "vinyl", "rock"],
+  "author": "Tu Nombre",
+  "license": "ISC"
+}

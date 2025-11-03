@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎸 Vinyl Rock Store - Tu tienda de vinilos de rock</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-record-vinyl"></i>
+                <h1>VINYL ROCK STORE</h1>
+            </div>
+            <nav class="nav">
+                <a href="#products" class="nav-link">Productos</a>
+                <a href="#add" class="nav-link">Agregar Vinilo</a>
+                <a href="#about" class="nav-link">Acerca de</a>
+            </nav>
+            <button class="btn-add-mobile" id="btnAddMobile">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-title">LA MEJOR COLECCIÓN DE VINILOS DE ROCK</h2>
+            <p class="hero-subtitle">Desde clásicos legendarios hasta rarezas coleccionables</p>
+            <button class="btn btn-primary" onclick="document.getElementById('add-product-section').scrollIntoView({behavior: 'smooth'})">
+                <i class="fas fa-compact-disc"></i> Agregar Vinilo
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-card">
+                <i class="fas fa-record-vinyl"></i>
+                <h3 id="totalProducts">0</h3>
+                <p>Vinilos Disponibles</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-guitar"></i>
+                <h3 id="totalGenres">8</h3>
+                <p>Géneros de Rock</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-fire"></i>
+                <h3>100%</h3>
+                <p>Auténticos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Product Section -->
+    <section id="add-product-section" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-plus-circle"></i> Agregar Nuevo Vinilo
+            </h2>
+            
+            <div class="form-container">
+                <form id="productForm" class="product-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">
+                                <i class="fas fa-compact-disc"></i> Nombre del Álbum
+                            </label>
+                            <input type="text" id="name" name="name" required 
+                                   placeholder="Ej: The Dark Side of the Moon">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="artist">
+                                <i class="fas fa-user-music"></i> Artista/Banda
+                            </label>
+                            <input type="text" id="artist" name="artist" required 
+                                   placeholder="Ej: Pink Floyd">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">
+                                <i class="fas fa-dollar-sign"></i> Precio
+                            </label>
+                            <input type="number" id="price" name="price" step="0.01" required 
+                                   placeholder="45.99">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">
+                                <i class="fas fa-boxes"></i> Stock
+                            </label>
+                            <input type="number" id="stock" name="stock" required 
+                                   placeholder="15">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genre">
+                                <i class="fas fa-music"></i> Género
+                            </label>
+                            <select id="genre" name="genre">
+                                <option value="">Selecciona un género</option>
+                                <option value="Rock Clásico">Rock Clásico</option>
+                                <option value="Hard Rock">Hard Rock</option>
+                                <option value="Heavy Metal">Heavy Metal</option>
+                                <option value="Punk Rock">Punk Rock</option>
+                                <option value="Alternative Rock">Alternative Rock</option>
+                                <option value="Progressive Rock">Progressive Rock</option>
+                                <option value="Grunge">Grunge</option>
+                                <option value="Indie Rock">Indie Rock</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="release_year">
+                                <i class="fas fa-calendar"></i> Año de Lanzamiento
+                            </label>
+                            <input type="number" id="release_year" name="release_year" 
+                                   min="1950" max="2025" placeholder="1973">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">
+                            <i class="fas fa-align-left"></i> Descripción
+                        </label>
+                        <textarea id="description" name="description" rows="4" required 
+                                  placeholder="Describe el álbum, su importancia histórica, canciones destacadas..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Guardar Vinilo
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Limpiar
+                        </button>
+                    </div>
+                </form>
+
+                <div id="formMessage" class="message" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-record-vinyl"></i> Nuestra Colección
+            </h2>
+
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active" data-genre="all">
+                    <i class="fas fa-th"></i> Todos
+                </button>
+                <button class="filter-btn" data-genre="Rock Clásico">
+                    <i class="fas fa-star"></i> Clásico
+                </button>
+                <button class="filter-btn" data-genre="Heavy Metal">
+                    <i class="fas fa-skull"></i> Metal
+                </button>
+                <button class="filter-btn" data-genre="Grunge">
+                    <i class="fas fa-guitar"></i> Grunge
+                </button>
+                <button class="filter-btn" data-genre="Progressive Rock">
+                    <i class="fas fa-infinity"></i> Progresivo
+                </button>
+            </div>
+
+            <div id="productsGrid" class="products-grid">
+                <!-- Loading spinner -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando vinilos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Editar Vinilo</h3>
+                <button class="modal-close" onclick="closeEditModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="editForm" class="product-form">
+                <input type="hidden" id="editId">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="editName">Nombre del Álbum</label>
+                        <input type="text" id="editName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editArtist">Artista/Banda</label>
+                        <input type="text" id="editArtist" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editPrice">Precio</label>
+                        <input type="number" id="editPrice" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editStock">Stock</label>
+                        <input type="number" id="editStock" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editGenre">Género</label>
+                        <select id="editGenre">
+                            <option value="">Selecciona un género</option>
+                            <option value="Rock Clásico">Rock Clásico</option>
+                            <option value="Hard Rock">Hard Rock</option>
+                            <option value="Heavy Metal">Heavy Metal</option>
+                            <option value="Punk Rock">Punk Rock</option>
+                            <option value="Alternative Rock">Alternative Rock</option>
+                            <option value="Progressive Rock">Progressive Rock</option>
+                            <option value="Grunge">Grunge</option>
+                            <option value="Indie Rock">Indie Rock</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editYear">Año de Lanzamiento</label>
+                        <input type="number" id="editYear" min="1950" max="2025">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="editDescription">Descripción</label>
+                    <textarea id="editDescription" rows="4" required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Actualizar
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-record-vinyl"></i> Vinyl Rock Store</h3>
+                    <p>La mejor selección de vinilos de rock desde 1973</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Géneros</h4>
+                    <ul>
+                        <li>Rock Clásico</li>
+                        <li>Heavy Metal</li>
+                        <li>Progressive Rock</li>
+                        <li>Grunge</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vinyl Rock Store. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
